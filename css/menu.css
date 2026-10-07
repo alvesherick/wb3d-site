@@ -1,0 +1,8 @@
+/* Bloco: menu (Herick) */
+
+.menu { position: sticky; top:0; z-index: 10; background: var(--fundo); border-bottom: 1px solid var(--borda);}
+.menu-conteudo { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; padding-bottom: 10px; }
+.menu-logo { height:44px; display: block; }
+.menu-links { display: flex; align-items: center; gap: 20px; }
+.menu-link { font-size: 14px; color: var(--texto-suave); }
+.menu-link:hover { color: var(--branco); }
