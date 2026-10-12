@@ -4,31 +4,20 @@
 
 /* Container principal da seção hero */
 .hero {
-  /* Coloca texto e imagem lado a lado */
+  /* ========================================= */
+  /* NOVAS REGRAS PARA LIMITAR E CENTRALIZAR:  */
+  max-width: 1100px;
+  margin: 60px auto; /* O 'auto' centraliza o banner na tela */
+  width: calc(100% - 40px); /* Garante que não encoste nas bordas no celular */
+  /* ========================================= */
+
   display: flex;
-
-  /* Espaço entre os elementos */
   justify-content: space-between;
-
-  /* Alinha tudo verticalmente ao centro */
   align-items: center;
-
-  /* Cor principal definida no style.css */
   background: var(--roxo);
-
-  /* Espaçamento interno */
   padding: 40px;
-
-  /* Arredonda os cantos */
   border-radius: 16px;
-
-  /* Espaço acima e abaixo da hero */
-  margin: 60px 0;
-
-  /* Permite adaptação em telas menores */
   flex-wrap: wrap;
-
-  /* Espaço entre os blocos */
   gap: 30px;
 }
 
@@ -232,13 +221,15 @@
 
 /* Container principal que organiza os cartões lado a lado */
 .cards {
-  /* Ativa o modelo flexbox */
+  /* ========================================= */
+  /* NOVAS REGRAS PARA LIMITAR E CENTRALIZAR:  */
+  max-width: 1100px;
+  margin: 0 auto; /* Centraliza os cards */
+  width: calc(100% - 40px);
+  /* ========================================= */
+
   display: flex;
-
-  /* Define o espaçamento uniforme entre os cartões */
   gap: 20px;
-
-  /* Permite que os cartões quebrem de linha caso necessário */
   flex-wrap: wrap;
 }
 
