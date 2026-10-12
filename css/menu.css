@@ -1,8 +1,24 @@
 /* Bloco: menu (Herick) */
 
+.logo-wrapper {
+    display: flex;
+    flex-direction: row; /* Garante que fiquem na mesma linha */
+    align-items: center;
+    gap: 12px; /* Espaço entre a imagem e o texto */
+    text-decoration: none;
+}
+.logo-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; /* Peso extra grosso */
+    font-style: italic; /* Inclinada como na imagem da logo */
+    font-size: 26px; /* Tamanho ajustado para alinhar bem com os 44px da imagem */
+    color: var(--branco);
+    line-height: 1; /* Evita que a caixa de texto empurre a imagem para baixo */
+    text-transform: uppercase;
+}
 .menu { position: sticky; top:0; z-index: 10; background: var(--fundo); border-bottom: 1px solid var(--borda);}
 .menu-conteudo { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; padding-bottom: 10px; }
-.menu-logo { height:44px; display: block; }
+.menu-logo { height: 50px; display: block; }
 .menu-links { display: flex; align-items: center; gap: 20px; }
 .menu-link { font-size: 14px; color: var(--texto-suave); }
 .menu-link:hover { color: var(--branco); }
