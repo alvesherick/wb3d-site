@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Define o padrão de caracteres -->
+    <meta charset="UTF-8">
+
+    <!-- Responsividade para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importa o CSS global -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Importa o CSS específico da seção hero -->
+    <link rel="stylesheet" href="hero.css">
+
+    <!-- Título da página -->
+    <title>Hero</title>
+</head>
+
+<body>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+
+        <!-- Área dos textos -->
+        <div class="hero-content">
+
+            <!-- Texto pequeno acima do título -->
+            <span class="hero-tag">
+                ESCANEAMENTO • IMPRESSÃO • MODELAGEM
+            </span>
+
+            <!-- Título principal -->
+            <h1>
+                Da ideia à solução
+            </h1>
+
+            <!-- Texto descritivo -->
+            <p>
+                Impressão 3D sob demanda, de uma única peça a milhares
+                de unidades. Você traz a ideia, a gente produz.
+            </p>
+
+            <!-- Container dos botões -->
+            <div class="hero-buttons">
+
+                <!-- Botão principal -->
+                <button class="btn-primary" onclick="window.location.href='sobre-contato.html'">
+                    Solicitar orçamento
+                </button>
+
+                <!-- Botão secundário -->
+                <button class="btn-secondary" onclick="window.location.href='produtos.html'">
+                    Ver produtos
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Imagem do logo da direita -->
+        <div class="hero-image">
+            <img src="C:\Users\Raul\Downloads\teste site\wb3d-site\img\logo.png" alt="Logo de empresa WB3D">
+        </div>
+        
+    </section>
+
+    <!-- Container dos cards de serviços -->
+    <div class="cards">
+        <!-- Card de Impressão 3D -->
+        <a href="impressao.html" class="card">
+            <!-- Ícone de Impressão posicionado sozinho em cima -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            <h3>Impressão 3D</h3>
+            <p>Peças únicas ou lotes</p>
+        </a>
+
+        <!-- Card de Modelagem 3D -->
+        <a href="modelagem.html" class="card">
+            <!-- Ícone de Modelagem posicionado sozinho em cima -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .69.41 1.31 1.51 1.51h.09a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <h3>Modelagem 3D</h3>
+            <p>Da ideia ao arquivo</p>
+        </a>
+
+        <!-- Card de Escaneamento -->
+        <a href="escaneamento.html" class="card">
+            <!-- Ícone de Escaneamento posicionado sozinho em cima -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                <line x1="7" y1="12" x2="17" y2="12"></line>
+            </svg>
+            <h3>Escaneamento</h3>
+            <p>Reprodução de peças</p>
+        </a>
+    </div>
+
+</body>
+
+</html>
