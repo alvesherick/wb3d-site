@@ -5,130 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produtos | WB3D</title>
   <!-- Estes links permitem testar este arquivo SOZINHO em secoes/produtos.html. -->
-  <!-- Ao integrar no index.html, o Herick copia somente o bloco marcado abaixo. -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/produtos.css">
 </head>
 <body>
-
-<!-- INÍCIO DO BLOCO PRODUTOS (VINÍCIUS) — copiar de <section> até </section> -->
-<section class="prod-section" id="produtos" aria-labelledby="prod-titulo"
-  onclick="
-    /* Clique delegado: continua funcionando mesmo se o HTML for inserido dinamicamente. */
-    const botao = event.target.closest('button[data-prod-mover], button[data-prod-pagina]');
-    if (botao && this.contains(botao)) {
-      const trilho = this.querySelector('.prod-trilho');
-      const cards = trilho.querySelectorAll('.prod-card');
-      const passo = cards[1].offsetLeft - cards[0].offsetLeft;
-      const limite = Math.max(0, Math.round((trilho.scrollWidth - trilho.clientWidth) / passo));
-      const atual = Math.round(trilho.scrollLeft / passo);
-      const destino = botao.hasAttribute('data-prod-mover')
-        ? atual + Number(botao.dataset.prodMover)
-        : Number(botao.dataset.prodPagina);
-      const pagina = Math.max(0, Math.min(destino, limite));
-      const movimento = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
-      trilho.scrollTo({ left: pagina * passo, behavior: movimento });
-    }
-  ">
-  <div class="prod-container">
-    <header class="prod-cabecalho">
-      <p class="prod-etiqueta">PRODUTOS</p>
-      <h2 class="prod-titulo" id="prod-titulo">Carrossel de produtos</h2>
-      <p class="prod-subtitulo">Da sua ideia à peça pronta: conheça algumas possibilidades de impressão 3D.</p>
-    </header>
-
-    <div class="prod-carrossel" role="region" aria-roledescription="carrossel" aria-label="Categorias de produtos da WB3D">
-      <button class="prod-seta prod-seta--anterior" type="button" data-prod-mover="-1"
-        aria-label="Ver produtos anteriores" aria-controls="prod-trilho" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-      </button>
-
-      <div class="prod-trilho" id="prod-trilho" tabindex="0" aria-label="Lista horizontal de produtos. Deslize ou use as setas."
-        onscroll="
-          /* Atualiza setas e pontos após clique, teclado ou gesto no celular. */
-          const cards = this.querySelectorAll('.prod-card');
-          const passo = cards[1].offsetLeft - cards[0].offsetLeft;
-          const pagina = Math.round(this.scrollLeft / passo);
-          const secao = this.closest('.prod-section');
-          secao.querySelector('.prod-seta--anterior').disabled = this.scrollLeft <= 2;
-          secao.querySelector('.prod-seta--proxima').disabled = this.scrollLeft >= this.scrollWidth - this.clientWidth - 2;
-          secao.querySelectorAll('.prod-ponto').forEach((ponto, indice) => {
-            const ativo = indice === pagina;
-            ponto.classList.toggle('prod-ponto--ativo', ativo);
-            if (ativo) ponto.setAttribute('aria-current', 'true');
-            else ponto.removeAttribute('aria-current');
-          });
-        ">
-
-        <article class="prod-card">
-          <div class="prod-imagem" aria-hidden="true">
-            <!-- Ícone provisório; substituir por foto real enviada pelo cliente. -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="8" cy="8" r="3.2"/><path d="m10.3 10.3 10 10m-6-3 3-3m0 3 2-2"/>
-            </svg>
+ 
+        <!-- INÍCIO DO BLOCO PRODUTOS (VINÍCIUS) -->
+        <section class="prod-section" id="produtos" aria-labelledby="prod-titulo"
+          onclick="
+            /* Clique delegado: continua funcionando mesmo se o HTML for inserido dinamicamente. */
+            const botao = event.target.closest('button[data-prod-mover], button[data-prod-pagina]');
+            if (botao && this.contains(botao)) {
+              const trilho = this.querySelector('.prod-trilho');
+              const cards = trilho.querySelectorAll('.prod-card');
+              const passo = cards[1].offsetLeft - cards[0].offsetLeft;
+              const limite = Math.max(0, Math.round((trilho.scrollWidth - trilho.clientWidth) / passo));
+              const atual = Math.round(trilho.scrollLeft / passo);
+              const destino = botao.hasAttribute('data-prod-mover')
+                ? atual + Number(botao.dataset.prodMover)
+                : Number(botao.dataset.prodPagina);
+              /* Setas: passou do fim volta ao primeiro; passou do começo vai ao último. */
+              let pagina = destino;
+              if (botao.hasAttribute('data-prod-mover')) {
+                if (destino > limite) pagina = 0;
+                else if (destino < 0) pagina = limite;
+              }
+              pagina = Math.max(0, Math.min(pagina, limite));
+              const movimento = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+              trilho.scrollTo({ left: pagina * passo, behavior: movimento });
+            }
+          ">
+          <div class="prod-container">
+            <header class="prod-cabecalho">
+              <p class="prod-etiqueta">PRODUTOS</p>
+              <h2 class="prod-titulo" id="prod-titulo">Carrossel de produtos</h2>
+              <p class="prod-subtitulo">Da sua ideia à peça pronta: conheça algumas possibilidades de impressão 3D.</p>
+            </header>
+ 
+            <div class="prod-carrossel" role="region" aria-roledescription="carrossel" aria-label="Categorias de produtos da WB3D">
+              <button class="prod-seta prod-seta--anterior" type="button" data-prod-mover="-1"
+                aria-label="Ver produtos anteriores" aria-controls="prod-trilho">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6"/>
+                </svg>
+              </button>
+ 
+              <div class="prod-trilho" id="prod-trilho" tabindex="0" aria-label="Lista horizontal de produtos. Deslize ou use as setas."
+                onscroll="
+                  /* Atualiza setas e pontos após clique, teclado ou gesto no celular. */
+                  const cards = this.querySelectorAll('.prod-card');
+                  const passo = cards[1].offsetLeft - cards[0].offsetLeft;
+                  const pagina = Math.round(this.scrollLeft / passo);
+                  const secao = this.closest('.prod-section');
+                  secao.querySelectorAll('.prod-ponto').forEach((ponto, indice) => {
+                    const ativo = indice === pagina;
+                    ponto.classList.toggle('prod-ponto--ativo', ativo);
+                    if (ativo) ponto.setAttribute('aria-current', 'true');
+                    else ponto.removeAttribute('aria-current');
+                  });
+                ">
+ 
+                <article class="prod-card">
+                  <div class="prod-imagem" aria-hidden="true">
+                    <!-- Ícone provisório; substituir por foto real enviada pelo cliente. -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="8" cy="8" r="3.2"/><path d="m10.3 10.3 10 10m-6-3 3-3m0 3 2-2"/>
+                    </svg>
+                  </div>
+                  <div class="prod-conteudo">
+                    <h3 class="prod-nome">Chaveiros e lembrancinhas</h3>
+                    <p class="prod-descricao">Peças personalizadas para presentes, eventos e ocasiões especiais.</p>
+                  </div>
+                </article>
+ 
+                <article class="prod-card">
+                  <div class="prod-imagem" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 7 9 5v10l-9-5V7Zm18 0-9 5v10l9-5V7Z"/>
+                    </svg>
+                  </div>
+                  <div class="prod-conteudo">
+                    <h3 class="prod-nome">Miniaturas e decoração</h3>
+                    <p class="prod-descricao">Miniaturas detalhadas e objetos decorativos produzidos em 3D.</p>
+                  </div>
+                </article>
+ 
+                <article class="prod-card">
+                  <div class="prod-imagem" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-1-5-3-4-5 2-3 5 1 4 5Zm0 0c2-1 5-3 4-5-2-3-5 1-4 5Z"/>
+                    </svg>
+                  </div>
+                  <div class="prod-conteudo">
+                    <h3 class="prod-nome">Brindes personalizados</h3>
+                    <p class="prod-descricao">Itens criativos para empresas, eventos e ações especiais.</p>
+                  </div>
+                </article>
+ 
+                <article class="prod-card">
+                  <div class="prod-imagem" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="3"/><path d="m10 2-.5 2.2-2.1.9-2-1.1-2.3 2.3 1.2 2-.9 2.1L1 11v3l2.4.6.9 2.1-1.2 2 2.3 2.3 2-1.2 2.1.9L10 23h3l.5-2.3 2.1-.9 2 1.2 2.3-2.3-1.2-2 .9-2.1L22 14v-3l-2.4-.6-.9-2.1 1.2-2L17.6 4l-2 1.1-2.1-.9L13 2h-3Z"/>
+                    </svg>
+                  </div>
+                  <div class="prod-conteudo">
+                    <h3 class="prod-nome">Peças técnicas</h3>
+                    <p class="prod-descricao">Protótipos, componentes e soluções para projetos personalizados.</p>
+                  </div>
+                </article>
+              </div>
+ 
+              <button class="prod-seta prod-seta--proxima" type="button" data-prod-mover="1"
+                aria-label="Ver próximos produtos" aria-controls="prod-trilho">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </button>
+            </div>
+ 
+            <div class="prod-indicadores" role="group" aria-label="Selecionar posição do carrossel">
+              <button class="prod-ponto prod-ponto--ativo" type="button" data-prod-pagina="0" aria-label="Ir para o primeiro produto" aria-controls="prod-trilho" aria-current="true"></button>
+              <button class="prod-ponto" type="button" data-prod-pagina="1" aria-label="Ir para o segundo produto" aria-controls="prod-trilho"></button>
+              <button class="prod-ponto" type="button" data-prod-pagina="2" aria-label="Ir para o terceiro produto" aria-controls="prod-trilho"></button>
+              <button class="prod-ponto" type="button" data-prod-pagina="3" aria-label="Ir para o quarto produto" aria-controls="prod-trilho"></button>
+            </div>
           </div>
-          <div class="prod-conteudo">
-            <h3 class="prod-nome">Chaveiros e lembrancinhas</h3>
-            <p class="prod-descricao">Peças personalizadas para presentes, eventos e ocasiões especiais.</p>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <div class="prod-imagem" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 7 9 5v10l-9-5V7Zm18 0-9 5v10l9-5V7Z"/>
-            </svg>
-          </div>
-          <div class="prod-conteudo">
-            <h3 class="prod-nome">Miniaturas e decoração</h3>
-            <p class="prod-descricao">Miniaturas detalhadas e objetos decorativos produzidos em 3D.</p>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <div class="prod-imagem" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-1-5-3-4-5 2-3 5 1 4 5Zm0 0c2-1 5-3 4-5-2-3-5 1-4 5Z"/>
-            </svg>
-          </div>
-          <div class="prod-conteudo">
-            <h3 class="prod-nome">Brindes personalizados</h3>
-            <p class="prod-descricao">Itens criativos para empresas, eventos e ações especiais.</p>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <div class="prod-imagem" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/><path d="m10 2-.5 2.2-2.1.9-2-1.1-2.3 2.3 1.2 2-.9 2.1L1 11v3l2.4.6.9 2.1-1.2 2 2.3 2.3 2-1.2 2.1.9L10 23h3l.5-2.3 2.1-.9 2 1.2 2.3-2.3-1.2-2 .9-2.1L22 14v-3l-2.4-.6-.9-2.1 1.2-2L17.6 4l-2 1.1-2.1-.9L13 2h-3Z"/>
-            </svg>
-          </div>
-          <div class="prod-conteudo">
-            <h3 class="prod-nome">Peças técnicas</h3>
-            <p class="prod-descricao">Protótipos, componentes e soluções para projetos personalizados.</p>
-          </div>
-        </article>
-      </div>
-
-      <button class="prod-seta prod-seta--proxima" type="button" data-prod-mover="1"
-        aria-label="Ver próximos produtos" aria-controls="prod-trilho">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </button>
-    </div>
-
-    <div class="prod-indicadores" role="group" aria-label="Selecionar posição do carrossel">
-      <button class="prod-ponto prod-ponto--ativo" type="button" data-prod-pagina="0" aria-label="Ir para o primeiro produto" aria-controls="prod-trilho" aria-current="true"></button>
-      <button class="prod-ponto" type="button" data-prod-pagina="1" aria-label="Ir para o segundo produto" aria-controls="prod-trilho"></button>
-      <button class="prod-ponto" type="button" data-prod-pagina="2" aria-label="Ir para o terceiro produto" aria-controls="prod-trilho"></button>
-      <button class="prod-ponto" type="button" data-prod-pagina="3" aria-label="Ir para o quarto produto" aria-controls="prod-trilho"></button>
-    </div>
-  </div>
-</section>
-<!-- FIM DO BLOCO PRODUTOS (VINÍCIUS) -->
-
+        </section>
+        <!-- FIM DO BLOCO PRODUTOS (VINÍCIUS) -->
+ 
 </body>
 </html>

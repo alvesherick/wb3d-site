@@ -43,7 +43,7 @@
   gap: 16px;
   min-width: 0;
   overflow-x: auto;
-  padding: 3px 1px 12px;
+  padding: 10px 1px 12px;
   scrollbar-width: none;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;

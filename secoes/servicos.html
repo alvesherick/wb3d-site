@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços | WB3D</title>
+
+    <!-- O ../css/ sobe uma pasta (de secoes/ para a raiz) para achar a pasta css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/produtos.css">  <!-- título e fundo da seção -->
+    <link rel="stylesheet" href="../css/servicos.css">  <!-- cards de serviço -->
+</head>
+<body>
+
+        <!-- INÍCIO DO BLOCO SERVIÇOS (JAQUE) — copiar de <section> até </section> -->
+        <!-- Usa as mesmas classes "prod-" do Produtos (section, container e cabeçalho),
+             assim o fundo, o espaçamento e o título ficam idênticos. -->
+        <section class="prod-section" id="servicos" aria-labelledby="serv-titulo">
+            <div class="prod-container">
+
+                <!-- Cabeçalho: etiqueta + título + subtítulo, alinhados à esquerda como em Produtos -->
+                <header class="prod-cabecalho">
+                    <p class="prod-etiqueta">SERVIÇOS</p>
+                    <h2 class="prod-titulo" id="serv-titulo">Nossos serviços</h2>
+                    <p class="prod-subtitulo">Soluções completas em manufatura aditiva para o seu projeto.</p>
+                </header>
+
+                <div class="servicos-grid">
+
+                    <!-- SERVIÇO 1 -->
+                    <article class="servico-card">
+                        <div class="servico-icone">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9V2h12v7"></path>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                <path d="M6 14h12v8H6z"></path>
+                            </svg>
+                        </div>
+                        <h3>Impressão 3D</h3>
+                        <p>Produção de peças técnicas, protótipos e lotes finais com alta precisão e variados materiais (PLA, ABS, PETG).</p>
+                    </article>
+
+                    <!-- SERVIÇO 2 -->
+                    <article class="servico-card">
+                        <div class="servico-icone">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .69.41 1.31 1.51 1.51h.09a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </div>
+                        <h3>Modelagem 3D</h3>
+                        <p>Criação e otimização de arquivos tridimensionais a partir do seu esboço, ideia ou necessidade técnica.</p>
+                    </article>
+
+                    <!-- SERVIÇO 3 -->
+                    <article class="servico-card">
+                        <div class="servico-icone">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                                <line x1="7" y1="12" x2="17" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3>Escaneamento 3D</h3>
+                        <p>Digitalização tridimensional de peças físicas para engenharia reversa, réplicas exatas ou modificações digitais.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+        <!-- FIM DO BLOCO SERVIÇOS (JAQUE) -->
+
+</body>
+</html>

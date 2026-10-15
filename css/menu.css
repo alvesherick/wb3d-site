@@ -1,24 +1,44 @@
 /* Bloco: menu (Herick) */
-
+ 
 .logo-wrapper {
     display: flex;
-    flex-direction: row; /* Garante que fiquem na mesma linha */
+    flex-direction: row;
     align-items: center;
-    gap: 12px; /* Espaço entre a imagem e o texto */
+    gap: 12px;
     text-decoration: none;
 }
 .logo-texto {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 800; /* Peso extra grosso */
-    font-style: italic; /* Inclinada como na imagem da logo */
-    font-size: 26px; /* Tamanho ajustado para alinhar bem com os 44px da imagem */
+    font-weight: 800;
+    font-style: italic;
+    font-size: 26px; 
     color: var(--branco);
-    line-height: 1; /* Evita que a caixa de texto empurre a imagem para baixo */
+    line-height: 1; 
     text-transform: uppercase;
 }
 .menu { position: sticky; top:0; z-index: 10; background: var(--fundo); border-bottom: 1px solid var(--borda);}
 .menu-conteudo { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; padding-bottom: 10px; }
 .menu-logo { height: 50px; display: block; }
 .menu-links { display: flex; align-items: center; gap: 20px; }
-.menu-link { font-size: 14px; color: var(--texto-suave); }
-.menu-link:hover { color: var(--branco); }
+ 
+ 
+.menu-link {
+    font-size: 14px;
+    color: var(--texto-suave);
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+ 
+.menu-link:hover {
+    color: var(--branco);
+    border-bottom-color: var(--destaque);
+}
+ 
+.menu-links .btn-claro {
+    transition: 0.3s;
+}
+ 
+.menu-links .btn-claro:hover {
+    transform: translateY(-2px);
+}
