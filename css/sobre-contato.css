@@ -1,0 +1,314 @@
+:root {
+  --rodape-fundo: #0E0B1A;
+  --rodape-card: #1E1540;
+  --rodape-roxo: #2A1170;
+  --rodape-borda: #3A2A6E;
+  --rodape-campo-borda: #6F5BB8;
+  --rodape-destaque: #B79CFF;
+  --rodape-texto: #F3F0FF;
+  --rodape-texto-suave: #CDC4EE;
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
+.rodape {
+  width: 100%;
+  background-color: var(--rodape-fundo);
+  border-top: 1px solid var(--rodape-borda);
+  color: var(--rodape-texto);
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+/* texto só para leitores de tela / campo anti-spam */
+.rodape-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.rodape-etiqueta {
+  display: block;
+  color: var(--rodape-destaque);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
+}
+
+.rodape-titulo {
+  display: block;
+  color: var(--rodape-texto);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.8rem 0;
+}
+
+.rodape-titulo-grande {
+  font-size: 32px;
+}
+
+.rodape-texto {
+  color: var(--rodape-texto-suave);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* ==========================================
+   LINHA 1: CONTATO + FORMULÁRIO
+   ========================================== */
+.rodape-topo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "info  form"
+    "redes form";
+  column-gap: 3rem;
+  row-gap: 2rem;
+  padding: 40px 2rem;
+}
+
+.rodape-info   { grid-area: info; }
+.rodape-contatos { grid-area: redes; align-self: end; }
+.rodape-form   { grid-area: form; }
+
+/* ----- WhatsApp e Instagram ----- */
+.rodape-contatos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+.rodape-contato {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--rodape-texto);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.rodape-contato:hover,
+.rodape-contato:focus-visible {
+  color: var(--rodape-destaque);
+}
+
+.rodape-icone {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ----- Card do formulário ----- */
+.rodape-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background-color: var(--rodape-card);
+  border: 1px solid var(--rodape-borda);
+  border-radius: 16px;
+  padding: 1.2rem 1.4rem 1.5rem;
+}
+
+.rodape-form-titulo {
+  color: var(--rodape-texto);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 0.2rem 0;
+}
+
+.rodape-campo {
+  width: 100%;
+  background-color: var(--rodape-fundo);
+  color: var(--rodape-texto);
+  border: 1px solid var(--rodape-campo-borda);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.rodape-campo::placeholder {
+  color: var(--rodape-texto-suave);
+  opacity: 0.8;
+}
+
+.rodape-campo:focus {
+  outline: 2px solid var(--rodape-destaque);
+  outline-offset: 1px;
+}
+
+select.rodape-campo {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--rodape-texto-suave) 50%),
+                    linear-gradient(135deg, var(--rodape-texto-suave) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 55%, calc(100% - 13px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+}
+
+.rodape-area {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.rodape-botao {
+  align-self: flex-start;
+  background-color: #ffffff;
+  color: var(--rodape-roxo);
+  border: 0;
+  border-radius: 8px;
+  padding: 0.7rem 1.4rem;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.rodape-botao:hover,
+.rodape-botao:focus-visible {
+  background-color: var(--rodape-destaque);
+}
+
+.rodape-botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rodape-form-status {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--rodape-texto-suave);
+  font-size: 12px;
+}
+
+/* ==========================================
+   LINHA 2: SOBRE + LINKS RÁPIDOS
+   ========================================== */
+.rodape-conteudo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5rem 3rem;
+  padding: 40px 2rem;
+  border-top: 1px solid var(--rodape-borda);
+}
+
+.rodape-coluna {
+  flex: 1 1 240px;
+  min-width: 220px;
+}
+
+.rodape-coluna-sobre {
+  flex: 2 1 300px;
+}
+
+.rodape-coluna-links {
+  flex: 0.6 1 160px;
+  min-width: 160px;
+}
+
+.rodape-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.rodape-link {
+  display: block;
+  color: var(--rodape-texto-suave);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.rodape-link:hover,
+.rodape-link:focus-visible {
+  color: var(--rodape-destaque);
+}
+
+/* ==========================================
+   COPYRIGHT
+   ========================================== */
+.rodape-copyright {
+  background-color: rgba(30, 21, 64, 0.45);
+  border-top: 1px solid var(--rodape-borda);
+  text-align: center;
+  padding: 1.2rem 2rem;
+}
+
+.rodape-copy-texto {
+  color: var(--rodape-texto-suave);
+  font-size: 12px;
+  margin: 0;
+}
+
+.rodape-copy-curto {
+  display: none;
+}
+
+/* ==========================================
+   CELULAR
+   ========================================== */
+@media (max-width: 768px) {
+  .rodape-topo {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "info"
+      "form"
+      "redes";
+    row-gap: 1.5rem;
+    padding: 32px 1.5rem;
+  }
+
+  .rodape-titulo-grande {
+    font-size: 24px;
+  }
+
+  .rodape-botao {
+    align-self: stretch;
+  }
+
+  .rodape-conteudo {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 32px 1.5rem;
+  }
+
+  .rodape-coluna,
+  .rodape-coluna-sobre,
+  .rodape-coluna-links {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .rodape-copy-completo {
+    display: none;
+  }
+
+  .rodape-copy-curto {
+    display: inline;
+  }
+}
