@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | WB3D</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <script>
+        // Se o visitante já escolheu o tema claro, aplica antes da página aparecer
+        if (localStorage.getItem("tema") == "claro") {
+            document.body.classList.add("claro");
+        }
+    </script>
+
+    <header>
+        <nav class="menu">
+            <a class="logo" href="index.html">
+                <img src="img/logo-wb3d.png" alt="Logo da WB3D">
+                <span>WB3D</span>
+            </a>
+            <input type="checkbox" name="bt_menu" id="bt_menu">
+            <label for="bt_menu">
+                <span class="icone_abrir">&#9776;</span>
+                <span class="icone_fechar">&#10005;</span>
+                <span class="so_leitor">Abrir ou fechar o menu</span>
+            </label>
+            <ul id="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#tecnologia">Tecnologia</a></li>
+                <li><a href="index.html#categorias">Categorias</a></li>
+                <li><a href="catalogo.html">Produtos</a></li>
+                <li><a class="botao_menu" href="index.html#orcamento">Orçamento</a></li>
+            </ul>
+            <button id="btn_tema" type="button"><span class="so_leitor" id="texto_tema">Tema escuro ativado. Clique para mudar para o tema claro.</span></button>
+        </nav>
+    </header>
+
+    <!-- VLibras (acessibilidade em Libras) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <main>
+
+        <section class="secao">
+            <div class="container">
+                <p class="etiqueta">CATÁLOGO</p>
+                <h1>Produtos</h1>
+                <p class="subtitulo">Escolha uma categoria e veja o que a WB3D já produziu.</p>
+
+                <div class="atalhos">
+                    <a href="#chaveiros">Chaveiros e lembrancinhas</a>
+                    <a href="#miniaturas">Miniaturas e decoração</a>
+                    <a href="#brindes">Brindes personalizados</a>
+                    <a href="#pecas">Peças técnicas</a>
+                </div>
+
+                <section class="categoria" id="chaveiros">
+                <h2>Chaveiros e lembrancinhas</h2>
+                <div class="galeria">
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/chaveiro-nossa-senhora-aparecida.jpeg" alt="Chaveiro da Nossa Senhora Aparecida em branco e dourado, ao lado de uma régua"></button>
+                        <figcaption>Chaveiro Nossa Senhora Aparecida</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/chaveiro-retrato-personalizado.jpeg" alt="Chaveiro redondo com o retrato ilustrado de um homem de colarinho clerical"></button>
+                        <figcaption>Chaveiro com retrato personalizado</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/chaveiros-redondos-personalizados.jpeg" alt="Dezenas de chaveiros ovais coloridos com argolas metálicas"></button>
+                        <figcaption>Chaveiros personalizados em lote</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+                <section class="categoria" id="miniaturas">
+                <h2>Miniaturas e decoração</h2>
+                <div class="galeria">
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniatura-cobra-roxa.jpeg" alt="Miniatura do Pokémon Ekans, uma cobra roxa com detalhes amarelos, impressa em 3D"></button>
+                        <figcaption>Ekans</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniatura-dragao-azul.jpeg" alt="Miniatura do Pokémon Golduck, azul com bico amarelo, impressa em 3D"></button>
+                        <figcaption>Golduck</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniatura-dragao-vermelho.jpeg" alt="Miniatura do Pokémon Greninja em vermelho, agachado, impressa em 3D"></button>
+                        <figcaption>Greninja</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniatura-mascote-sao-paulo.jpeg" alt="Miniatura de mascote de time com uniforme branco e o braço erguido"></button>
+                        <figcaption>Mascote do São Paulo</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniatura-polvo-cartola.jpeg" alt="Miniatura do Pokémon Omanyte, com concha bege e tentáculos verdes, impressa em 3D"></button>
+                        <figcaption>Omanyte</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniatura-nossa-senhora-aparecida-kit.jpeg" alt="Kit de miniaturas da Nossa Senhora Aparecida com as peças soltas"></button>
+                        <figcaption>Kit Nossa Senhora Aparecida</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniaturas-nossa-senhora-aparecida-lote.jpeg" alt="Lote de miniaturas azuis da Nossa Senhora Aparecida enfileiradas"></button>
+                        <figcaption>Lote Nossa Senhora Aparecida</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniaturas-personagens-coloridos.jpeg" alt="Várias miniaturas de Pokémon, como Charizard e Pikachu, em vermelho e amarelo"></button>
+                        <figcaption>Minis Charizard e Pikachu</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniaturas-personagens-com-copos.jpeg" alt="Pequenas taças azul-claras e personagens pretos impressos em 3D"></button>
+                        <figcaption>Personagens com taças</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniaturas-personagens-rosa-e-bege.jpeg" alt="Várias miniaturas bege do Pokémon Dragonite ao lado de uma miniatura rosa maior do Rowlet"></button>
+                        <figcaption>Minis Dragonite e Rowlet</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/miniaturas-personagens-roxos.jpeg" alt="Pilha de miniaturas roxas do Pokémon Gastly"></button>
+                        <figcaption>Minis Gastly</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/enfeite-arvore-decorativa.jpeg" alt="Enfeite de árvore com folhas verdes e base marrom"></button>
+                        <figcaption>Enfeite de árvore decorativa</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/guirlanda-estrelas-natalinas.jpeg" alt="Guirlanda de estrelas douradas e brancas com laço dourado"></button>
+                        <figcaption>Guirlanda de estrelas natalinas</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+                <section class="categoria" id="brindes">
+                <h2>Brindes personalizados</h2>
+                <div class="galeria">
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/brindes-dia-dos-professores.jpeg" alt="Brindes pretos e dourados com a mensagem Feliz Dia dos Professores"></button>
+                        <figcaption>Brindes Dia dos Professores</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/caixa-selecao-brasileira.jpeg" alt="Caixa dourada com o escudo da seleção brasileira e a palavra Brasil"></button>
+                        <figcaption>Caixa Seleção Brasileira</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/enfeites-ore-e-confie.jpeg" alt="Enfeites coloridos com a frase Ore e confie"></button>
+                        <figcaption>Enfeites Ore e confie</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+                <section class="categoria" id="pecas">
+                <h2>Peças técnicas</h2>
+                <div class="galeria">
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/suporte-controle-headset.jpeg" alt="Suporte preto segurando um fone de ouvido e um controle de videogame"></button>
+                        <figcaption>Suporte para controle e headset</figcaption>
+                    </figure>
+                    <figure class="produto">
+                        <button class="moldura" type="button"><span class="so_leitor">Ampliar foto:</span><img src="img/suporte-multifuncional-preto.jpeg" alt="Suporte multifuncional preto impresso em 3D"></button>
+                        <figcaption>Suporte multifuncional preto</figcaption>
+                    </figure>
+                </div>
+            </section>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>WB3D – Escaneamento, Impressões e Modelagens · &copy; 2026</p>
+    </footer>
+
+    <!-- Foto ampliada (abre ao clicar numa foto) -->
+    <div id="ampliada" class="ampliada">
+        <button id="fechar" type="button">&#10005;<span class="so_leitor">Fechar foto ampliada</span></button>
+        <figure class="ampliada_conteudo">
+            <img id="foto_grande" src="img/logo-wb3d.png" alt="">
+            <figcaption id="legenda_grande"></figcaption>
+        </figure>
+    </div>
+
+    <script src="js/tema.js"></script>
+    <script src="js/ampliar.js"></script>
+</body>
+</html>

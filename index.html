@@ -1,264 +1,271 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WB3D | Escaneamento, Impressões e Modelagens</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/produtos.css">
-    <link rel="stylesheet" href="css/servicos.css">
-    <link rel="stylesheet" href="css/sobre-contato.css">
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
+    <script>
+        // Se o visitante já escolheu o tema claro, aplica antes da página aparecer
+        if (localStorage.getItem("tema") == "claro") {
+            document.body.classList.add("claro");
+        }
+    </script>
 
-    <!-- MENU (HERICK) -->
-    <header class="menu">
-        <div class="container menu-conteudo">
-            <a href="#" class="logo-wrapper">
-                <img class="menu-logo" src="img/logo-wb3d.png" alt="Logo da WB3D">
-                <span class="logo-texto">WB3D</span>
+    <header>
+        <nav class="menu">
+            <a class="logo" href="index.html">
+                <img src="img/logo-wb3d.png" alt="Logo da WB3D">
+                <span>WB3D</span>
             </a>
-            <nav class="menu-links">
-                <a class="menu-link" href="#">Início</a>
-                <a class="menu-link" href="#produtos">Produtos</a>
-                <a class="menu-link" href="#servicos">Serviços</a>
-                <a class="menu-link" href="#tecnologia">Tecnologia</a>
-                <a class="menu-link" href="#sobre">Sobre</a>
-                <a class="btn btn-claro" href="#contato">Orçamento</a>
-            </nav>
-        </div>
+            <input type="checkbox" name="bt_menu" id="bt_menu">
+            <label for="bt_menu">
+                <span class="icone_abrir">&#9776;</span>
+                <span class="icone_fechar">&#10005;</span>
+                <span class="so_leitor">Abrir ou fechar o menu</span>
+            </label>
+            <ul id="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#tecnologia">Tecnologia</a></li>
+                <li><a href="index.html#categorias">Categorias</a></li>
+                <li><a href="catalogo.html">Produtos</a></li>
+                <li><a class="botao_menu" href="index.html#orcamento">Orçamento</a></li>
+            </ul>
+            <button id="btn_tema" type="button"><span class="so_leitor" id="texto_tema">Tema escuro ativado. Clique para mudar para o tema claro.</span></button>
+        </nav>
     </header>
 
-    <main>
-        <!-- INÍCIO (RAUL) — somente o HERO fica aqui -->
-        <div class="container">
-        <section class="hero" id="inicio">
-
-            <div class="hero-content">
-
-                <span class="hero-tag">
-                    ESCANEAMENTO • IMPRESSÃO • MODELAGEM
-                </span>
-
-                <h1>
-                    Da ideia à solução
-                </h1>
-
-                <p>
-                    Impressão 3D sob demanda, de uma única peça a milhares
-                    de unidades. Você traz a ideia, a gente produz.
-                </p>
-
-                <div class="hero-buttons">
-                    <button class="btn-primary" onclick="window.location.href='#contato'">
-                        Solicitar orçamento
-                    </button>
-
-                    <button class="btn-secondary" onclick="window.location.href='#produtos'">
-                        Ver produtos
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="hero-image">
-                <img src="img/logo-wb3d.png" alt="Logo de empresa WB3D">
-            </div>
-
-        </section>
+    <!-- VLibras (acessibilidade em Libras) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
-        <!-- PRODUTOS (VINICIUS) -->
-        <!-- INÍCIO DO BLOCO PRODUTOS (VINÍCIUS) -->
-        <section class="prod-section" id="produtos" aria-labelledby="prod-titulo"
-          onclick="
-            /* Clique delegado: continua funcionando mesmo se o HTML for inserido dinamicamente. */
-            const botao = event.target.closest('button[data-prod-mover], button[data-prod-pagina]');
-            if (botao && this.contains(botao)) {
-              const trilho = this.querySelector('.prod-trilho');
-              const cards = trilho.querySelectorAll('.prod-card');
-              const passo = cards[1].offsetLeft - cards[0].offsetLeft;
-              const limite = Math.max(0, Math.round((trilho.scrollWidth - trilho.clientWidth) / passo));
-              const atual = Math.round(trilho.scrollLeft / passo);
-              const destino = botao.hasAttribute('data-prod-mover')
-                ? atual + Number(botao.dataset.prodMover)
-                : Number(botao.dataset.prodPagina);
-              /* Setas: passou do fim volta ao primeiro; passou do começo vai ao último. */
-              let pagina = destino;
-              if (botao.hasAttribute('data-prod-mover')) {
-                if (destino > limite) pagina = 0;
-                else if (destino < 0) pagina = limite;
-              }
-              pagina = Math.max(0, Math.min(pagina, limite));
-              const movimento = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
-              trilho.scrollTo({ left: pagina * passo, behavior: movimento });
-            }
-          ">
-          <div class="prod-container">
-            <header class="prod-cabecalho">
-              <p class="prod-etiqueta">PRODUTOS</p>
-              <h2 class="prod-titulo" id="prod-titulo">Carrossel de produtos</h2>
-              <p class="prod-subtitulo">Da sua ideia à peça pronta: conheça algumas possibilidades de impressão 3D.</p>
-            </header>
+    <main>
 
-            <div class="prod-carrossel" role="region" aria-roledescription="carrossel" aria-label="Categorias de produtos da WB3D">
-              <button class="prod-seta prod-seta--anterior" type="button" data-prod-mover="-1"
-                aria-label="Ver produtos anteriores" aria-controls="prod-trilho">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m15 18-6-6 6-6"/>
-                </svg>
-              </button>
-
-              <div class="prod-trilho" id="prod-trilho" tabindex="0" aria-label="Lista horizontal de produtos. Deslize ou use as setas."
-                onscroll="
-                  /* Atualiza setas e pontos após clique, teclado ou gesto no celular. */
-                  const cards = this.querySelectorAll('.prod-card');
-                  const passo = cards[1].offsetLeft - cards[0].offsetLeft;
-                  const pagina = Math.round(this.scrollLeft / passo);
-                  const secao = this.closest('.prod-section');
-                  secao.querySelectorAll('.prod-ponto').forEach((ponto, indice) => {
-                    const ativo = indice === pagina;
-                    ponto.classList.toggle('prod-ponto--ativo', ativo);
-                    if (ativo) ponto.setAttribute('aria-current', 'true');
-                    else ponto.removeAttribute('aria-current');
-                  });
-                ">
-
-                <article class="prod-card">
-                  <div class="prod-imagem" aria-hidden="true">
-                    <!-- Ícone provisório; substituir por foto real enviada pelo cliente. -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="8" cy="8" r="3.2"/><path d="m10.3 10.3 10 10m-6-3 3-3m0 3 2-2"/>
-                    </svg>
-                  </div>
-                  <div class="prod-conteudo">
-                    <h3 class="prod-nome">Chaveiros e lembrancinhas</h3>
-                    <p class="prod-descricao">Peças personalizadas para presentes, eventos e ocasiões especiais.</p>
-                  </div>
-                </article>
-
-                <article class="prod-card">
-                  <div class="prod-imagem" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 7 9 5v10l-9-5V7Zm18 0-9 5v10l9-5V7Z"/>
-                    </svg>
-                  </div>
-                  <div class="prod-conteudo">
-                    <h3 class="prod-nome">Miniaturas e decoração</h3>
-                    <p class="prod-descricao">Miniaturas detalhadas e objetos decorativos produzidos em 3D.</p>
-                  </div>
-                </article>
-
-                <article class="prod-card">
-                  <div class="prod-imagem" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-1-5-3-4-5 2-3 5 1 4 5Zm0 0c2-1 5-3 4-5-2-3-5 1-4 5Z"/>
-                    </svg>
-                  </div>
-                  <div class="prod-conteudo">
-                    <h3 class="prod-nome">Brindes personalizados</h3>
-                    <p class="prod-descricao">Itens criativos para empresas, eventos e ações especiais.</p>
-                  </div>
-                </article>
-
-                <article class="prod-card">
-                  <div class="prod-imagem" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="3"/><path d="m10 2-.5 2.2-2.1.9-2-1.1-2.3 2.3 1.2 2-.9 2.1L1 11v3l2.4.6.9 2.1-1.2 2 2.3 2.3 2-1.2 2.1.9L10 23h3l.5-2.3 2.1-.9 2 1.2 2.3-2.3-1.2-2 .9-2.1L22 14v-3l-2.4-.6-.9-2.1 1.2-2L17.6 4l-2 1.1-2.1-.9L13 2h-3Z"/>
-                    </svg>
-                  </div>
-                  <div class="prod-conteudo">
-                    <h3 class="prod-nome">Peças técnicas</h3>
-                    <p class="prod-descricao">Protótipos, componentes e soluções para projetos personalizados.</p>
-                  </div>
-                </article>
-              </div>
-
-              <button class="prod-seta prod-seta--proxima" type="button" data-prod-mover="1"
-                aria-label="Ver próximos produtos" aria-controls="prod-trilho">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m9 18 6-6-6-6"/>
-                </svg>
-              </button>
-            </div>
-
-            <div class="prod-indicadores" role="group" aria-label="Selecionar posição do carrossel">
-              <button class="prod-ponto prod-ponto--ativo" type="button" data-prod-pagina="0" aria-label="Ir para o primeiro produto" aria-controls="prod-trilho" aria-current="true"></button>
-              <button class="prod-ponto" type="button" data-prod-pagina="1" aria-label="Ir para o segundo produto" aria-controls="prod-trilho"></button>
-              <button class="prod-ponto" type="button" data-prod-pagina="2" aria-label="Ir para o terceiro produto" aria-controls="prod-trilho"></button>
-              <button class="prod-ponto" type="button" data-prod-pagina="3" aria-label="Ir para o quarto produto" aria-controls="prod-trilho"></button>
-            </div>
-          </div>
-        </section>
-        <!-- FIM DO BLOCO PRODUTOS (VINÍCIUS) -->
-
-        <!-- SERVIÇOS E TECNOLOGIA (JAQUE) -->
-        <!-- INÍCIO DO BLOCO SERVIÇOS (JAQUE) — copiar de <section> até </section> -->
-        <!-- Usa as mesmas classes "prod-" do Produtos (section, container e cabeçalho),
-             assim o fundo, o espaçamento e o título ficam idênticos. -->
-        <section class="prod-section" id="servicos" aria-labelledby="serv-titulo">
-            <div class="prod-container">
-
-                <!-- Cabeçalho: etiqueta + título + subtítulo, alinhados à esquerda como em Produtos -->
-                <header class="prod-cabecalho">
-                    <p class="prod-etiqueta">SERVIÇOS</p>
-                    <h2 class="prod-titulo" id="serv-titulo">Nossos serviços</h2>
-                    <p class="prod-subtitulo">Soluções completas em manufatura aditiva para o seu projeto.</p>
-                </header>
-
-                <div class="servicos-grid">
-
-                    <!-- SERVIÇO 1 -->
-                    <article class="servico-card">
-                        <div class="servico-icone">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9V2h12v7"></path>
-                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                                <path d="M6 14h12v8H6z"></path>
-                            </svg>
-                        </div>
-                        <h3>Impressão 3D</h3>
-                        <p>Produção de peças técnicas, protótipos e lotes finais com alta precisão e variados materiais (PLA, ABS, PETG, Resina).</p>
-                    </article>
-
-                    <!-- SERVIÇO 2 -->
-                    <article class="servico-card">
-                        <div class="servico-icone">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .69.41 1.31 1.51 1.51h.09a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                            </svg>
-                        </div>
-                        <h3>Modelagem 3D</h3>
-                        <p>Criação e otimização de arquivos tridimensionais a partir do seu esboço, ideia ou necessidade técnica.</p>
-                    </article>
-
-                    <!-- SERVIÇO 3 -->
-                    <article class="servico-card">
-                        <div class="servico-icone">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
-                                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
-                                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
-                                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
-                                <line x1="7" y1="12" x2="17" y2="12"></line>
-                            </svg>
-                        </div>
-                        <h3>Escaneamento 3D</h3>
-                        <p>Digitalização tridimensional de peças físicas para engenharia reversa, réplicas exatas ou modificações digitais.</p>
-                    </article>
-
+        <!-- TELA 1: INÍCIO E INSTITUCIONAL -->
+        <section id="inicio" class="hero">
+            <div class="hero_cor">
+                <div class="container">
+                    <div class="hero_texto">
+                        <p class="etiqueta">ESCANEAMENTO · IMPRESSÃO · MODELAGEM</p>
+                        <h1>Da ideia à solução</h1>
+                        <p>Impressão 3D sob demanda, de uma única peça a milhares de unidades. Você traz a ideia, a gente produz.</p>
+                        <a class="botao" href="#orcamento">Solicitar orçamento</a>
+                        <a class="botao_contorno" href="catalogo.html">Ver produtos</a>
+                    </div>
                 </div>
             </div>
         </section>
-        <!-- FIM DO BLOCO SERVIÇOS (JAQUE) -->
 
-        <!-- SOBRE E CONTATO (RIAN) -->
+        <section id="sobre" class="secao">
+            <div class="container">
+                <div class="colunas">
+                    <div class="col_texto">
+                        <p class="etiqueta">INSTITUCIONAL</p>
+                        <h2>Sobre a WB3D</h2>
+                        <p>A WB3D nasceu em 2021 da união entre mecânica, desenho técnico, tecnologia e a vontade de criar. Atendemos online, com envio pelos Correios e transportadoras, e buscamos entender o que o cliente precisa para encontrar um jeito de produzir.</p>
+                    </div>
+                    <div class="col_logo">
+                        <img src="img/logo-wb3d.png" alt="Selo da WB3D: Escaneamento, Impressões e Modelagens, desde 2021">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA 2: SERVIÇOS -->
+        <section id="servicos" class="secao">
+            <div class="container">
+                <p class="etiqueta">SERVIÇOS</p>
+                <h2>O que a WB3D faz por você</h2>
+                <p class="subtitulo">Você pode chegar com um arquivo pronto ou só com uma ideia.</p>
+
+                <div class="cards_servico">
+                    <article class="card_servico" id="serv_impressao">
+                        <div class="texto_servico">
+                            <h3>Impressão 3D</h3>
+                            <p>Peças únicas ou lotes com milhares de unidades.</p>
+                        </div>
+                    </article>
+                    <article class="card_servico" id="serv_modelagem">
+                        <div class="texto_servico">
+                            <h3>Modelagem 3D</h3>
+                            <p>Você traz a ideia e a gente desenvolve a peça.</p>
+                        </div>
+                    </article>
+                    <article class="card_servico" id="serv_escaneamento">
+                        <div class="texto_servico">
+                            <h3>Escaneamento 3D</h3>
+                            <p>Reprodução de peças a partir de objetos reais.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="faixa">
+                    <p>Tem um projeto em mente? Peça um orçamento sem compromisso.</p>
+                    <a class="botao" href="#orcamento">Solicitar orçamento</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA 3: TECNOLOGIA -->
+        <section id="tecnologia" class="secao">
+            <div class="container">
+                <div class="colunas">
+                    <div class="col_fotos">
+                        <img src="img/impressao-3d.jfif" alt="Impressora 3D Bambu Lab imprimindo um vaso azul e verde">
+                        <img src="img/escaneamento-3d.jfif" alt="Escâner 3D de mão digitalizando uma escultura de dragão, com o modelo aparecendo no notebook">
+                    </div>
+                    <div class="col_texto2">
+                        <p class="etiqueta">TECNOLOGIA</p>
+                        <h2>Impressoras e escâner</h2>
+                        <p class="subtitulo">Trabalhamos com impressão 3D FDM/FFF, e o nosso parque de máquinas cresce conforme a demanda.</p>
+
+                        <div class="card">
+                            <h3>Bambu Lab A1</h3>
+                            <p>Impressão FDM/FFF</p>
+                        </div>
+                        <div class="card">
+                            <h3>Bambu Lab A1 Mini</h3>
+                            <p>Impressão FDM/FFF</p>
+                        </div>
+                        <div class="card">
+                            <h3>Escâner 3D</h3>
+                            <p>Digitalização de peças</p>
+                        </div>
+
+                        <a class="botao" href="catalogo.html">Ver produtos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA 4: CARROSSEL DE CATEGORIAS -->
+        <section id="categorias" class="secao">
+            <div class="container">
+                <p class="etiqueta">CATEGORIAS</p>
+                <h2>Categorias</h2>
+                <p class="subtitulo">Da sua ideia à peça pronta: veja o que a WB3D produz.</p>
+
+                <div class="carrossel">
+                    <button class="seta" id="seta_anterior" type="button">&#8249;<span class="so_leitor">Categoria anterior</span></button>
+
+                    <div class="cards_categoria">
+                        <article class="card_categoria ativo">
+                            <div class="foto_categoria" id="cat_chaveiros"></div>
+                            <div class="info_categoria">
+                                <h3>Chaveiros e lembrancinhas</h3>
+                                <p>Personalizados com nome, logo ou desenho.</p>
+                                <a href="catalogo.html#chaveiros">Ver no catálogo ›</a>
+                            </div>
+                        </article>
+                        <article class="card_categoria">
+                            <div class="foto_categoria" id="cat_miniaturas"></div>
+                            <div class="info_categoria">
+                                <h3>Miniaturas e decoração</h3>
+                                <p>Peças decorativas e colecionáveis.</p>
+                                <a href="catalogo.html#miniaturas">Ver no catálogo ›</a>
+                            </div>
+                        </article>
+                        <article class="card_categoria">
+                            <div class="foto_categoria" id="cat_brindes"></div>
+                            <div class="info_categoria">
+                                <h3>Brindes personalizados</h3>
+                                <p>Placas, nomes e letreiros.</p>
+                                <a href="catalogo.html#brindes">Ver no catálogo ›</a>
+                            </div>
+                        </article>
+                        <article class="card_categoria">
+                            <div class="foto_categoria" id="cat_pecas"></div>
+                            <div class="info_categoria">
+                                <h3>Peças técnicas</h3>
+                                <p>Protótipos e peças funcionais.</p>
+                                <a href="catalogo.html#pecas">Ver no catálogo ›</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button class="seta" id="seta_proxima" type="button">&#8250;<span class="so_leitor">Próxima categoria</span></button>
+                </div>
+
+                <div class="pontos">
+                    <span class="ponto ativo"></span>
+                    <span class="ponto"></span>
+                    <span class="ponto"></span>
+                    <span class="ponto"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA 6: CONTATO E REDES SOCIAIS -->
+        <section id="orcamento" class="secao">
+            <div class="container">
+                <div class="colunas colunas_contato">
+                    <div class="contato_texto">
+                        <div>
+                            <p class="etiqueta">CONTATO</p>
+                            <h2>Tem uma ideia? Vamos conversar</h2>
+                            <p class="subtitulo">Peça seu orçamento sem compromisso, pelo WhatsApp ou pelo formulário.</p>
+                        </div>
+                        <div class="contato_logo">
+                            <img src="img/logo-wb3d.png" alt="Logo da WB3D: Escaneamento, Impressões e Modelagens">
+                        </div>
+                        <p class="redes">
+                            <a href="https://wa.me/5511954197316">WhatsApp: (11) 95419-7316</a>
+                            <!-- Quando tiverem o perfil, tirem o comentário da linha abaixo e troquem o endereço:
+                            <a href="https://www.instagram.com/SEU_PERFIL">Instagram</a>
+                            -->
+                        </p>
+                    </div>
+
+                    <form id="form_orcamento">
+                        <fieldset>
+                            <legend>Solicite seu orçamento</legend>
+
+                            <label class="required" for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome" placeholder="Seu nome" required>
+
+                            <label class="required" for="contato">WhatsApp ou e-mail</label>
+                            <input type="text" name="contato" id="contato" placeholder="Como podemos falar com você?" required>
+
+                            <label for="tipo">Tipo de peça</label>
+                            <select name="tipo" id="tipo">
+                                <option>Chaveiros e lembrancinhas</option>
+                                <option>Miniaturas e decoração</option>
+                                <option>Brindes personalizados</option>
+                                <option>Peças técnicas</option>
+                            </select>
+
+                            <label for="quantidade">Quantidade de peças</label>
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Ex.: 50">
+
+                            <label for="ideia">Descreva sua ideia</label>
+                            <textarea name="ideia" id="ideia" rows="4" placeholder="Conte o que você precisa"></textarea>
+
+                            <button type="submit">Enviar pedido</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- RODAPÉ (RIAN) -->
+    <footer>
+        <p>WB3D – Escaneamento, Impressões e Modelagens · &copy; 2026</p>
+    </footer>
 
+    <script src="js/tema.js"></script>
+    <script src="js/carrossel.js"></script>
+    <script src="js/orcamento.js"></script>
 </body>
 </html>

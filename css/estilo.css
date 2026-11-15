@@ -1,0 +1,725 @@
+/* =========================================================
+   WB3D - estilo do site
+
+   PARTE 1: ESTRUTURA (tamanhos, espaços, posição). Não tem cores.
+   PARTE 2: CORES do tema escuro (padrão).
+   PARTE 3: CORES do tema claro (classe "claro" no body).
+   PARTE 4: CELULAR (telas até 890px).
+   ========================================================= */
+
+
+/* =========================================================
+   PARTE 1: ESTRUTURA
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding-top: 71px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+h1 { font-size: 40px; font-style: italic; line-height: 1.2; margin: 0 0 14px 0; }
+h2 { font-size: 28px; line-height: 1.3; margin: 0 0 8px 0; }
+h3 { font-size: 16px; margin: 0 0 4px 0; }
+p  { margin-top: 0; }
+a  { text-decoration: none; }
+img { max-width: 100%; }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.secao { padding: 76px 0 36px 0; }
+
+.etiqueta {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.subtitulo { margin-bottom: 26px; }
+
+/* texto só para leitores de tela */
+.so_leitor {
+    position: absolute;
+    left: -9999px;
+}
+
+/* ---------- Colunas lado a lado ---------- */
+.colunas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ---------- Botões ---------- */
+.botao, .botao_contorno, .botao_menu {
+    display: inline-block;
+    padding: 11px 22px;
+    margin: 0 10px 10px 0;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* ---------- Menu (fixo no topo) ---------- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+}
+.logo img { height: 44px; margin-right: 12px; border-radius: 50%; }
+
+#menu {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+    padding: 0;
+    list-style: none;
+}
+#menu li { margin-left: 22px; }
+#menu a {
+    font-size: 14px;
+    padding-bottom: 4px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    transition: 0.3s;
+}
+#menu a.botao_menu {
+    padding: 9px 18px;
+    margin: 0;
+    border-bottom-width: 2px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* botão de tema: interruptor (a bolinha é o ::after) */
+#btn_tema {
+    position: relative;
+    width: 56px;
+    height: 30px;
+    margin-left: 22px;
+    padding: 0;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+#btn_tema::after {
+    content: "\263E";
+    position: absolute;
+    top: 2px;
+    left: 28px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    transition: 0.3s;
+}
+body.claro #btn_tema::after {
+    content: "\2600";
+    left: 2px;
+}
+
+/* botão hambúrguer: só aparece no celular */
+label[for="bt_menu"], #bt_menu { display: none; }
+
+/* ---------- Tela 1: Início ---------- */
+.hero {
+    background-image: url(../img/impressao-3d.jfif);
+    background-size: cover;
+    background-position: center;
+}
+.hero_cor { padding: 80px 0; }
+.hero_texto { max-width: 560px; }
+
+.col_texto { width: 58%; }
+.col_logo { width: 32%; text-align: center; }
+.col_logo img { width: 240px; border-radius: 50%; }
+
+/* ---------- Tela 2: Serviços ---------- */
+.cards_servico {
+    display: flex;
+    justify-content: space-between;
+}
+.card_servico {
+    position: relative;
+    width: 32%;
+    height: 290px;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+}
+#serv_impressao    { background-image: url(../img/impressao-3d.jfif); }
+#serv_modelagem    { background-image: url(../img/modelagem-3d.jfif); }
+#serv_escaneamento { background-image: url(../img/escaneamento-3d.jfif); }
+
+.texto_servico {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 18px;
+}
+.texto_servico p { margin: 0; font-size: 13px; }
+
+.faixa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+    padding: 14px 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+}
+.faixa p { margin: 0; font-weight: bold; }
+.faixa .botao { margin: 0; }
+
+/* ---------- Tela 3: Tecnologia ---------- */
+.col_fotos { width: 50%; }
+.col_fotos img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+    border-radius: 12px;
+}
+.col_texto2 { width: 44%; }
+
+.card {
+    margin-bottom: 10px;
+    padding: 12px 18px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+}
+.card p { margin: 0; font-size: 13px; }
+.col_texto2 .botao { margin-top: 12px; }
+
+/* ---------- Tela 4: Categorias (carrossel) ---------- */
+.carrossel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cards_categoria {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.card_categoria {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.foto_categoria {
+    height: 230px;
+    margin: 14px 14px 0 14px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+#cat_chaveiros  { background-image: url(../img/chaveiro-retrato-personalizado.jpeg); }
+#cat_miniaturas { background-image: url(../img/miniatura-dragao-azul.jpeg); }
+#cat_brindes    { background-image: url(../img/enfeites-ore-e-confie.jpeg); }
+#cat_pecas      { background-image: url(../img/suporte-controle-headset.jpeg); }
+
+.info_categoria {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 12px 16px 18px 16px;
+}
+.info_categoria p { margin-bottom: 6px; font-size: 13px; }
+.info_categoria a {
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: 13px;
+    font-weight: bold;
+}
+/* o ::after do link cobre o card inteiro: clicar em qualquer parte leva ao catálogo */
+.info_categoria a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* setas e pontinhos: só aparecem no celular */
+.seta, .pontos { display: none; }
+
+/* ---------- Tela 5: Catálogo ---------- */
+.atalhos { margin-bottom: 10px; }
+.atalhos a {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    padding: 6px 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.categoria { padding-top: 76px; }
+.categoria h2 { margin-bottom: 16px; }
+
+.galeria { margin-bottom: 10px; }
+.produto {
+    display: inline-block;
+    vertical-align: top;
+    width: 14.5%;
+    margin: 0 1.5% 20px 0;
+}
+/* moldura: caixa de tamanho fixo; a foto cabe inteira dentro dela, sem distorcer */
+.moldura {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 280px;
+    padding: 0;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+}
+.moldura img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+.produto figcaption { padding-top: 6px; font-size: 12px; }
+
+/* ---------- Foto ampliada ---------- */
+body.travado { overflow: hidden; }
+
+.ampliada {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+.ampliada.aberta { display: flex; }
+
+.ampliada_conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+    margin: 0;
+}
+.ampliada_conteudo img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 88%;
+    border-radius: 10px;
+}
+.ampliada_conteudo figcaption { padding-top: 12px; font-size: 15px; text-align: center; }
+
+#fechar {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    width: 46px;
+    height: 46px;
+    font-size: 22px;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+/* ---------- Tela 6: Contato ---------- */
+.colunas_contato { align-items: stretch; }
+.contato_texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 44%;
+}
+.contato_logo { text-align: center; margin: 24px 0; }
+.contato_logo img { width: 200px; border-radius: 50%; }
+.redes { margin: 0; }
+.redes a { margin-right: 24px; font-weight: bold; }
+
+form { width: 52%; }
+fieldset {
+    margin: 0;
+    padding: 18px 22px 22px 22px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+}
+legend { padding: 0 8px; font-weight: bold; font-size: 15px; }
+
+label { display: block; margin-top: 10px; margin-bottom: 3px; font-size: 13px; }
+label.required::after { content: " *"; }
+
+input[type="text"], input[type="number"], select, textarea {
+    display: block;
+    width: 100%;
+    padding: 9px 10px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+}
+form button {
+    margin-top: 16px;
+    padding: 11px 24px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* ---------- Rodapé ---------- */
+footer {
+    padding: 22px 20px;
+    text-align: center;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+footer p { margin: 0; font-size: 13px; }
+
+
+/* =========================================================
+   PARTE 2: CORES - TEMA ESCURO (padrão)
+   ========================================================= */
+
+body { background-color: #0E0B1A; color: #F3F0FF; }
+h1, h2, h3 { color: #FFFFFF; }
+a { color: #B79CFF; }
+
+.etiqueta { color: #B79CFF; }
+.subtitulo { color: #C9BEEE; }
+
+/* menu */
+.menu { background-color: #0E0B1A; border-bottom-color: #3A2A6E; }
+.logo { color: #FFFFFF; }
+#menu a { color: #C9BEEE; }
+#menu a:hover { color: #FFFFFF; border-bottom-color: #B79CFF; }
+#menu a.botao_menu { background-color: #FFFFFF; color: #2A1170; border-color: #FFFFFF; }
+#menu a.botao_menu:hover { background-color: #D9CCFF; border-color: #D9CCFF; }
+#btn_tema { background-color: #2A1170; border-color: #B79CFF; }
+#btn_tema::after { background-color: #FFFFFF; color: #2A1170; }
+#btn_tema:hover { border-color: #FFFFFF; }
+label[for="bt_menu"] { color: #FFFFFF; }
+
+/* botões */
+.botao { background-color: #FFFFFF; color: #2A1170; border-color: #FFFFFF; }
+.botao:hover { background-color: #D9CCFF; border-color: #D9CCFF; }
+.botao_contorno { background-color: transparent; color: #F3F0FF; border-color: #B79CFF; }
+.botao_contorno:hover { background-color: #B79CFF; color: #0E0B1A; }
+
+/* início: a foto fica escurecida para o texto aparecer bem */
+.hero_cor { background-color: rgba(14, 11, 26, 0.80); }
+.hero_texto p { color: #F3F0FF; }
+
+/* serviços */
+.card_servico { border-color: #3A2A6E; background-color: #1E1540; }
+.texto_servico { background-color: rgba(14, 11, 26, 0.90); }
+.texto_servico p { color: #F3F0FF; }
+.faixa { background-color: #1E1540; border-color: #3A2A6E; }
+
+/* tecnologia */
+.card { background-color: #1E1540; border-color: #3A2A6E; }
+.card p { color: #C9BEEE; }
+
+/* categorias */
+.card_categoria { background-color: #1E1540; border-color: #3A2A6E; }
+.card_categoria:hover { border-color: #B79CFF; }
+.info_categoria p { color: #C9BEEE; }
+.info_categoria a:hover { color: #FFFFFF; }
+.seta { background-color: transparent; color: #B79CFF; border-color: #B79CFF; }
+.ponto { background-color: #3A2A6E; }
+.ponto.ativo { background-color: #B79CFF; }
+
+/* catálogo */
+.atalhos a { color: #F3F0FF; border-color: #6A55B0; }
+.atalhos a:hover { background-color: #B79CFF; color: #0E0B1A; border-color: #B79CFF; }
+.produto figcaption { color: #C9BEEE; }
+.moldura { background-color: #FFFFFF; border-color: #3A2A6E; }
+.moldura:hover { border-color: #B79CFF; }
+
+/* foto ampliada: fundo escuro e botão claro, nos dois temas */
+.ampliada { background-color: rgba(8, 6, 16, 0.96); }
+.ampliada_conteudo figcaption { color: #F3F0FF; }
+#fechar { background-color: #FFFFFF; color: #2A1170; border-color: #FFFFFF; }
+#fechar:hover { background-color: #D9CCFF; border-color: #D9CCFF; }
+.info_categoria a:focus::after { outline: 3px solid #B79CFF; outline-offset: -3px; }
+
+/* contato */
+.redes a { color: #F3F0FF; }
+.redes a:hover { color: #B79CFF; }
+fieldset { background-color: #1E1540; border-color: #3A2A6E; }
+legend { color: #FFFFFF; }
+label.required::after { color: #B79CFF; }
+input[type="text"], input[type="number"], select, textarea {
+    background-color: #0E0B1A;
+    color: #F3F0FF;
+    border-color: #6A55B0;
+}
+form button { background-color: #FFFFFF; color: #2A1170; border-color: #FFFFFF; }
+form button:hover { background-color: #D9CCFF; border-color: #D9CCFF; }
+
+/* rodapé */
+footer { background-color: #150F2A; border-top-color: #3A2A6E; }
+footer p { color: #C9BEEE; }
+
+
+/* =========================================================
+   PARTE 3: CORES - TEMA CLARO
+   (cores tiradas do mockup do tema claro; nada de estrutura aqui)
+   ========================================================= */
+
+body.claro { background-color: #F6F3FE; color: #250D5E; }
+body.claro h1, body.claro h2, body.claro h3 { color: #250D5E; }
+body.claro a { color: #4A1F97; }
+
+body.claro .etiqueta { color: #5A32B5; }
+body.claro .subtitulo { color: #5C5380; }
+
+/* menu */
+body.claro .menu { background-color: #FFFFFF; border-bottom-color: #E0D8FA; }
+body.claro .logo { color: #250D5E; }
+body.claro #menu a { color: #443B68; }
+body.claro #menu a:hover { color: #250D5E; border-bottom-color: #4A1F97; }
+body.claro #menu a.botao_menu { background-color: #4A1F97; color: #FFFFFF; border-color: #4A1F97; }
+body.claro #menu a.botao_menu:hover { background-color: #5E2FB8; border-color: #5E2FB8; }
+body.claro #btn_tema { background-color: #E3DCFB; border-color: #4A1F97; }
+body.claro #btn_tema::after { background-color: #4A1F97; color: #FFFFFF; }
+body.claro #btn_tema:hover { border-color: #250D5E; }
+body.claro label[for="bt_menu"] { color: #250D5E; }
+
+/* botões */
+body.claro .botao { background-color: #4A1F97; color: #FFFFFF; border-color: #4A1F97; }
+body.claro .botao:hover { background-color: #5E2FB8; border-color: #5E2FB8; }
+body.claro .botao_contorno { background-color: transparent; color: #4A1F97; border-color: #4A1F97; }
+body.claro .botao_contorno:hover { background-color: #4A1F97; color: #FFFFFF; }
+
+/* início: a foto fica clareada */
+body.claro .hero_cor { background-color: rgba(246, 243, 254, 0.90); }
+body.claro .hero_texto p { color: #443B68; }
+
+/* serviços */
+body.claro .card_servico { border-color: #E0D8FA; background-color: #E3DCFB; }
+body.claro .texto_servico { background-color: rgba(255, 255, 255, 0.93); }
+body.claro .texto_servico p { color: #443B68; }
+body.claro .faixa { background-color: #FFFFFF; border-color: #E0D8FA; }
+
+/* tecnologia */
+body.claro .card { background-color: #FFFFFF; border-color: #E0D8FA; }
+body.claro .card h3 { color: #2E177B; }
+body.claro .card p { color: #443B68; }
+
+/* categorias */
+body.claro .card_categoria { background-color: #FFFFFF; border-color: #E0D8FA; }
+body.claro .card_categoria:hover { border-color: #4A1F97; }
+body.claro .info_categoria p { color: #443B68; }
+body.claro .info_categoria a { color: #4A1F97; }
+body.claro .info_categoria a:hover { color: #250D5E; }
+body.claro .seta { background-color: transparent; color: #4A1F97; border-color: #4A1F97; }
+body.claro .ponto { background-color: #D5CBF5; }
+body.claro .ponto.ativo { background-color: #4A1F97; }
+
+/* catálogo */
+body.claro .atalhos a { color: #4A1F97; border-color: #B9A9EA; }
+body.claro .atalhos a:hover { background-color: #4A1F97; color: #FFFFFF; border-color: #4A1F97; }
+body.claro .produto figcaption { color: #443B68; }
+body.claro .moldura { background-color: #FFFFFF; border-color: #E0D8FA; }
+body.claro .moldura:hover { border-color: #4A1F97; }
+body.claro .info_categoria a:focus::after { outline: 3px solid #4A1F97; outline-offset: -3px; }
+
+/* contato */
+body.claro .redes a { color: #250D5E; }
+body.claro .redes a:hover { color: #4A1F97; }
+body.claro fieldset { background-color: #FFFFFF; border-color: #E0D8FA; }
+body.claro legend { color: #250D5E; }
+body.claro label.required::after { color: #5A32B5; }
+body.claro input[type="text"], body.claro input[type="number"], body.claro select, body.claro textarea {
+    background-color: #FFFFFF;
+    color: #250D5E;
+    border-color: #8B77C9;
+}
+body.claro form button { background-color: #4A1F97; color: #FFFFFF; border-color: #4A1F97; }
+body.claro form button:hover { background-color: #5E2FB8; border-color: #5E2FB8; }
+
+/* rodapé */
+body.claro footer { background-color: #EFEAFC; border-top-color: #E0D8FA; }
+body.claro footer p { color: #544A7A; }
+
+
+/* =========================================================
+   PARTE 4: CELULAR (telas até 890px)
+   ========================================================= */
+
+@media screen and (max-width: 890px) {
+
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    body { padding-top: 63px; }
+    .secao { padding: 68px 0 16px 0; }
+    .categoria { padding-top: 68px; }
+
+    /* menu hambúrguer */
+    .menu { display: block; position: relative; padding: 12px 20px; }
+    .logo { font-size: 22px; }
+    .logo img { height: 38px; }
+
+    label[for="bt_menu"] {
+        display: block;
+        position: absolute;
+        top: 14px;
+        right: 20px;
+        margin: 0;
+        padding: 4px 8px;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+    }
+    .icone_fechar { display: none; }
+    #bt_menu:checked ~ label .icone_abrir { display: none; }
+    #bt_menu:checked ~ label .icone_fechar { display: inline; }
+
+    /* o checkbox fica invisível, mas continua acessível pelo teclado */
+    #bt_menu {
+        display: block;
+        position: absolute;
+        top: 14px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        opacity: 0;
+    }
+    #bt_menu:focus ~ label { outline: 3px solid #B79CFF; }
+
+    #btn_tema {
+        position: absolute;
+        top: 16px;
+        right: 72px;
+        margin: 0;
+    }
+
+    #menu { display: none; }
+    #bt_menu:checked ~ #menu { display: block; width: 100%; margin: 12px 0 0 0; }
+    #menu li { margin: 0; padding: 10px 0; }
+    #menu a { display: block; font-size: 16px; border-bottom-width: 0; padding-bottom: 0; }
+    #menu a:hover { border-bottom-width: 0; }
+    #menu a.botao_menu { text-align: center; border-bottom-width: 2px; }
+
+    /* colunas passam a ficar uma embaixo da outra */
+    .colunas { flex-direction: column; align-items: flex-start; }
+    .col_texto, .col_logo, .col_texto2, .contato_texto, form { width: 100%; }
+    .col_logo { margin-top: 24px; }
+    .col_logo img { width: 180px; }
+    .hero_cor { padding: 50px 0; }
+
+    /* serviços */
+    .cards_servico { flex-direction: column; }
+    .card_servico { width: 100%; margin-bottom: 14px; }
+    .faixa { flex-direction: column; align-items: flex-start; }
+    .faixa .botao { margin-top: 14px; }
+
+    /* tecnologia: as duas fotos ficam lado a lado em cima */
+    .col_fotos { display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px; }
+    .col_fotos img { width: 48.5%; margin-bottom: 0; }
+
+    /* carrossel: um card por vez, com setas e pontinhos */
+    .cards_categoria { display: block; }
+    .card_categoria { display: none; width: 100%; }
+    .card_categoria.ativo { display: block; }
+    .foto_categoria { height: 220px; }
+
+    .carrossel { justify-content: space-between; }
+    .seta {
+        display: block;
+        width: 34px;
+        height: 42px;
+        margin: 0 6px;
+        padding: 0;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 10px;
+    }
+    .pontos { display: block; margin-top: 14px; text-align: center; }
+    .ponto {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        border-radius: 50%;
+    }
+
+    /* catálogo: 2 fotos por linha */
+    .produto { width: 45%; margin: 0 3% 18px 0; }
+    .moldura { height: 250px; }
+    #fechar { top: 10px; right: 12px; }
+
+    /* contato */
+    .contato_logo img { width: 140px; }
+    .redes { margin: 0 0 22px 0; }
+
+    footer p { font-size: 12px; }
+}
